@@ -15,30 +15,47 @@
 # limitations under the License.
 #
 
+ifeq ($(TARGET_USES_MURENA_BOOTANIMATION),true)
+BOOTANIMATION_TAR = bootanimation_murena.tar
+BOOTANIMATION_FPS := 30
+else
+BOOTANIMATION_TAR = bootanimation.tar
+BOOTANIMATION_FPS := 60
+endif
+
 TARGET_GENERATED_BOOTANIMATION := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION/bootanimation.zip
 $(TARGET_GENERATED_BOOTANIMATION): INTERMEDIATES := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION
 $(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
 	@echo "Building bootanimation.zip"
 	@rm -rf $(dir $@)
 	@mkdir -p $(dir $@)
-	$(hide) tar xfp vendor/lineage/bootanimation/bootanimation.tar -C $(INTERMEDIATES)
+	$(hide) tar xfp vendor/lineage/bootanimation/$(BOOTANIMATION_TAR) -C $(INTERMEDIATES)
 	$(hide) if [ $(TARGET_SCREEN_HEIGHT) -lt $(TARGET_SCREEN_WIDTH) ]; then \
 	    IMAGEWIDTH=$(TARGET_SCREEN_HEIGHT); \
 	else \
 	    IMAGEWIDTH=$(TARGET_SCREEN_WIDTH); \
 	fi; \
 	IMAGESCALEWIDTH=$$IMAGEWIDTH; \
-	IMAGESCALEHEIGHT=$$(expr $$IMAGESCALEWIDTH / 3); \
+	if [ "$(TARGET_USES_MURENA_BOOTANIMATION)" = "true" ]; then \
+		IMAGESCALEHEIGHT=$(TARGET_SCREEN_HEIGHT); \
+	else \
+		IMAGESCALEHEIGHT=$$(expr $$IMAGESCALEWIDTH / 3); \
+	fi; \
 	if [ "$(TARGET_BOOTANIMATION_HALF_RES)" = "true" ]; then \
 	    IMAGEWIDTH="$$(expr "$$IMAGEWIDTH" / 2)"; \
 	fi; \
-	IMAGEHEIGHT=$$(expr $$IMAGEWIDTH / 3); \
+	if [ "$(TARGET_USES_MURENA_BOOTANIMATION)" = "true" ]; then \
+		IMAGEHEIGHT=$(TARGET_SCREEN_HEIGHT); \
+	else \
+		IMAGEHEIGHT=$$(expr $$IMAGEWIDTH / 3); \
+	fi; \
 	RESOLUTION="$$IMAGEWIDTH"x"$$IMAGEHEIGHT"; \
 	for part_cnt in 0 1 2 3 4; do \
 	    mkdir -p $(INTERMEDIATES)/part$$part_cnt; \
 	done; \
 	prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify -resize $$RESOLUTION -colors 250 $(INTERMEDIATES)/*/*.png; \
-	echo "$$IMAGESCALEWIDTH $$IMAGESCALEHEIGHT 60" > $(INTERMEDIATES)/desc.txt; \
+	BOOTANIMFPS=$(BOOTANIMATION_FPS); \
+	echo "$$IMAGESCALEWIDTH $$IMAGESCALEHEIGHT $$BOOTANIMFPS" > $(INTERMEDIATES)/desc.txt; \
 	cat vendor/lineage/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
 	$(hide) $(SOONG_ZIP) -L 0 -o $(TARGET_GENERATED_BOOTANIMATION) -C $(INTERMEDIATES) -D $(INTERMEDIATES)
 
