@@ -16,7 +16,7 @@ PRODUCT_PACKAGES += \
     Profiles \
     Seedvault
 
-ifneq ($(TARGET_EXCLUDES_AUDIOFX),true)
+ifeq ($(TARGET_INCLUDES_AUDIOFX),true)
 PRODUCT_PACKAGES += \
     AudioFX
 endif
