@@ -5,6 +5,17 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
     ro.modversion=$(LINEAGE_VERSION) \
     ro.lineagelegal.url=https://lineageos.org/legal
+    ro.elegal.url=https://e.foundation/legal
+
+ifdef CI_PIPELINE_ID
+    PRODUCT_PROPERTY_OVERRIDES += \
+        ro.cm.build.pipeline.id=$(CI_PIPELINE_ID)
+endif
+
+ifdef CI_PIPELINE_IID
+    PRODUCT_PROPERTY_OVERRIDES += \
+        ro.cm.build.pipeline.iid=$(CI_PIPELINE_IID)
+endif
 
 # LineageOS Platform Display Version
 ADDITIONAL_BUILD_PROPERTIES += \
