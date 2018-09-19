@@ -8,12 +8,12 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.elegal.url=https://e.foundation/legal
 
 ifdef CI_PIPELINE_ID
-    PRODUCT_PROPERTY_OVERRIDES += \
+    ADDITIONAL_BUILD_PROPERTIES += \
         ro.cm.build.pipeline.id=$(CI_PIPELINE_ID)
 endif
 
 ifdef CI_PIPELINE_IID
-    PRODUCT_PROPERTY_OVERRIDES += \
+    ADDITIONAL_BUILD_PROPERTIES += \
         ro.cm.build.pipeline.iid=$(CI_PIPELINE_IID)
 endif
 
