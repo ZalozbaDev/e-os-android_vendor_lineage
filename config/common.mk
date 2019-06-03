@@ -139,7 +139,6 @@ PRODUCT_PACKAGES += \
 
 # Custom Lineage packages
 PRODUCT_PACKAGES += \
-    AudioFX \
     Backgrounds \
     LineageSettingsProvider \
     LineageSetupWizard \
