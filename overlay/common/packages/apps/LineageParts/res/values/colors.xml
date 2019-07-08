@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <!-- Eelo colors -->
+    <color name="red_1">#FB3846</color>
+    <color name="blue_1">#007FFF</color>
+    <color name="orange_1">#FC7222</color>
+    <color name="blue_2">#24527E</color>
+    <color name="gray_1">#C8CED0</color>
+    <color name="gray_2">#848484</color>
+    <color name="green_1">#38D874</color>
+
+</resources>
+
