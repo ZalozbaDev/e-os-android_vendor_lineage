@@ -19,7 +19,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Default notification/alarm sounds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.config.notification_sound=Selenium.ogg \
-    ro.config.alarm_alert=Promethium.ogg
+    ro.config.alarm_alert=Platinum-old.ogg
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
