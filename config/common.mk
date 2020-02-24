@@ -241,6 +241,8 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
+PRODUCT_PACKAGE_OVERLAYS := vendor/lineage/overlay/microg
+
 DEVICE_PACKAGE_OVERLAYS += vendor/lineage/overlay/common
 
 PRODUCT_VERSION_MAJOR = 0
