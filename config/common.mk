@@ -121,34 +121,33 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
-	# Required /e/ packages
-	PRODUCT_PACKAGES += \
-	    GmsCore \
-			GsfProxy \
-			FakeStore \
-			com.google.android.maps.jar \
-			Mail \
-			BlissLauncher \
-			BlissIconPack \
-			MozillaNlpBackend \
-			OpenWeatherMapWeatherProvider \
-			AccountManager \
-			MagicEarth \
-			PdfViewer \
-			Camera \
-			eDrive \
-			Weather \
-			Notes \
-			Tasks \
-			NominatimNlpBackend \
-			DroidGuard \
-			LibreOfficeViewer \
-			OpenKeychain \
-			Message \
-			Browser \
-			BrowserWebView \
-			Apps
-
+# Required /e/ packages
+PRODUCT_PACKAGES += \
+    GmsCore \
+		GsfProxy \
+		FakeStore \
+		com.google.android.maps.jar \
+		Mail \
+		BlissLauncher \
+		BlissIconPack \
+		MozillaNlpBackend \
+		OpenWeatherMapWeatherProvider \
+		AccountManager \
+		MagicEarth \
+		PdfViewer \
+		Camera \
+		eDrive \
+		Weather \
+		Notes \
+		Tasks \
+		NominatimNlpBackend \
+		DroidGuard \
+		LibreOfficeViewer \
+		OpenKeychain \
+		Message \
+		Browser \
+		BrowserWebView \
+		Apps
 
 # Required Lineage packages
 PRODUCT_PACKAGES += \
