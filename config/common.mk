@@ -211,6 +211,11 @@ PRODUCT_PACKAGES += \
     wget \
     zip
 
+# Custom packages
+ifdef CUSTOM_PACKAGES
+PRODUCT_PACKAGES += $(CUSTOM_PACKAGES)
+endif
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
