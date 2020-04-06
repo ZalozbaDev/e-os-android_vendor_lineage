@@ -129,6 +129,34 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
+# Required /e/ packages
+PRODUCT_PACKAGES += \
+    GmsCore \
+		GsfProxy \
+		FakeStore \
+		com.google.android.maps.jar \
+		Mail \
+		BlissLauncher \
+		BlissIconPack \
+		MozillaNlpBackend \
+		OpenWeatherMapWeatherProvider \
+		AccountManager \
+		MagicEarth \
+		PdfViewer \
+		Camera \
+		eDrive \
+		Weather \
+		Notes \
+		Tasks \
+		NominatimNlpBackend \
+		DroidGuard \
+		LibreOfficeViewer \
+		OpenKeychain \
+		Message \
+		Browser \
+		BrowserWebView \
+		Apps
+
 # Required Lineage packages
 PRODUCT_PACKAGES += \
     LineageParts \
@@ -193,6 +221,12 @@ PRODUCT_PACKAGES += \
     wget \
     zip
 
+# Custom packages
+ifdef CUSTOM_PACKAGES
+PRODUCT_PACKAGES += $(CUSTOM_PACKAGES)
+endif
+
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
@@ -251,6 +285,8 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
+PRODUCT_PACKAGE_OVERLAYS := vendor/lineage/overlay/microg
+
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/lineage/overlay/common
 
@@ -272,11 +308,6 @@ ifndef LINEAGE_BUILDTYPE
         RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
         LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
     endif
-endif
-
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE :=
 endif
 
 ifdef LINEAGE_BUILDTYPE
