@@ -108,30 +108,31 @@ PRODUCT_PACKAGES += \
 # Required /e/ packages
 PRODUCT_PACKAGES += \
     GmsCore \
-		GsfProxy \
-		FakeStore \
-		com.google.android.maps.jar \
-		Mail \
-		BlissLauncher \
-		BlissIconPack \
-		MozillaNlpBackend \
-		OpenWeatherMapWeatherProvider \
-		AccountManager \
-		MagicEarth \
-		PdfViewer \
-		Camera \
-		eDrive \
-		Weather \
-		Notes \
-		Tasks \
-		NominatimNlpBackend \
-		DroidGuard \
-		LibreOfficeViewer \
-		OpenKeychain \
-		Message \
-		Browser \
-		BrowserWebView \
-		Apps
+    GsfProxy \
+    FakeStore \
+    com.google.android.maps.jar \
+    Mail \
+    BlissLauncher \
+    BlissIconPack \
+    MozillaNlpBackend \
+    OpenWeatherMapWeatherProvider \
+    AccountManager \
+    MagicEarth \
+    PdfViewer \
+    Camera \
+    eDrive \
+    Weather \
+    Notes \
+    Tasks \
+    NominatimNlpBackend \
+    DroidGuard \
+    LibreOfficeViewer \
+    OpenKeychain \
+    Message \
+    Browser \
+    BrowserWebView \
+    Apps \
+    ESmsSync
 
 PRODUCT_PACKAGES += \
     Terminal
