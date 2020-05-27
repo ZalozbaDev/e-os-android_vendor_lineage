@@ -156,7 +156,7 @@ PRODUCT_PACKAGES += \
     Browser \
     BrowserWebView \
     Apps \
-    eSMS
+    ESmsSync
 
 # Required Lineage packages
 PRODUCT_PACKAGES += \
