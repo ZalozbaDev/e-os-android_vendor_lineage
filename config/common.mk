@@ -123,6 +123,7 @@ PRODUCT_PACKAGES += \
 
 # Required /e/ packages
 PRODUCT_PACKAGES += \
+    Seedvault \
     GmsCore \
 		GsfProxy \
 		FakeStore \
