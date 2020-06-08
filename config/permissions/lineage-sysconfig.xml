@@ -22,4 +22,7 @@
     <allow-implicit-broadcast action="lineageos.intent.action.INITIALIZE_LINEAGE_HARDWARE" />
     <allow-implicit-broadcast action="lineageos.intent.action.LID_STATE_CHANGED" />
 
+    <backup-transport-whitelisted-service
+        service="com.stevesoltys.seedvault/.transport.ConfigurableBackupTransportService"/>
+
 </config>
