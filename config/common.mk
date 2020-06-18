@@ -96,6 +96,10 @@ PRODUCT_COPY_FILES += \
     vendor/lineage/config/permissions/org.lineageos.android.xml:system/etc/permissions/org.lineageos.android.xml \
     vendor/lineage/config/permissions/privapp-permissions-lineage.xml:system/etc/permissions/privapp-permissions-lineage.xml
 
+# Pre-granted permissions
+PRODUCT_COPY_FILES += \
+    vendor/lineage/config/permissions/eos-permissions.xml:system/etc/default-permissions/eos-permissions.xml
+
 # Include Lineage audio files
 include vendor/lineage/config/lineage_audio.mk
 
