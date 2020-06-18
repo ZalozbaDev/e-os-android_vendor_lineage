@@ -91,6 +91,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lineage/config/permissions/lineage-power-whitelist.xml:system/etc/sysconfig/lineage-power-whitelist.xml
 
+# Pre-granted eos-permissions
+PRODUCT_COPY_FILES += \
+    vendor/lineage/config/permissions/eos-permissions.xml:system/etc/default-permissions/eos-permissions.xml
+
+
 # Include AOSP audio files
 include vendor/lineage/config/aosp_audio.mk
 
