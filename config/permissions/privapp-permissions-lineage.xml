@@ -106,5 +106,13 @@
         <permission name="android.permission.BIND_APPWIDGET"/>
         <permission name="android.permission.PACKAGE_USAGE_STATS"/>
     </privapp-permissions>
+     
+     <privapp-permissions package="com.stevesoltys.seedvault">
+        <permission name="android.permission.BACKUP"/>
+        <permission name="android.permission.MANAGE_USB"/>
+        <permission name="android.permission.INSTALL_PACKAGES"/>
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+
 
 </permissions>
