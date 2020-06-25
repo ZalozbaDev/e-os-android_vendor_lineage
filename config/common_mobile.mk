@@ -3,8 +3,8 @@ $(call inherit-product, vendor/lineage/config/common.mk)
 
 # Default notification/alarm sounds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.config.notification_sound=Argon.ogg \
-    ro.config.alarm_alert=Hassium.ogg
+    ro.config.notification_sound=Selenium.ogg \
+    ro.config.alarm_alert=Platinum-old.ogg
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
