@@ -24,7 +24,6 @@ PRODUCT_PACKAGES += \
 
 # Lineage packages
 PRODUCT_PACKAGES += \
-    AudioFX \
     Backgrounds \
     Eleven \
     Etar \
