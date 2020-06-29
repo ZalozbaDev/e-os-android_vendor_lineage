@@ -265,6 +265,9 @@ ifdef PLATFORM_SDK_VERSION
   ifeq ($(PLATFORM_SDK_VERSION), 28)
 		ANDROID_LETTER := p
   endif
+    ifeq ($(PLATFORM_SDK_VERSION), 29)
+        ANDROID_LETTER := q
+  endif
 endif
 
 ifeq ($(LINEAGE_BUILDTYPE), RELEASE)
