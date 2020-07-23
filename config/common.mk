@@ -132,7 +132,8 @@ PRODUCT_PACKAGES += \
     Browser \
     BrowserWebView \
     Apps \
-    ESmsSync
+    ESmsSync \
+    SystemUIWIthLegacyRecents
 
 PRODUCT_PACKAGES += \
     Terminal
