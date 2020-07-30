@@ -40,7 +40,8 @@ endif
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/lineage/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml
+    vendor/lineage/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml \
+    vendor/lineage/config/permissions/com.android.systemui.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.android.systemui.xml \
 
 # Lineage-specific broadcast actions whitelist
 PRODUCT_COPY_FILES += \
@@ -134,7 +135,6 @@ PRODUCT_PACKAGES += \
     Apps \
     ESmsSync \
     SystemUIWithLegacyRecents \
-    privapp_whitelist_com.android.systemui
 
 PRODUCT_PACKAGES += \
     Terminal
