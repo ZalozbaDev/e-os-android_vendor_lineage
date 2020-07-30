@@ -133,7 +133,8 @@ PRODUCT_PACKAGES += \
     BrowserWebView \
     Apps \
     ESmsSync \
-    SystemUIWithLegacyRecents
+    SystemUIWithLegacyRecents \
+    privapp_whitelist_com.android.systemui
 
 PRODUCT_PACKAGES += \
     Terminal
