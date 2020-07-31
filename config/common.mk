@@ -152,7 +152,8 @@ PRODUCT_PACKAGES += \
     Browser \
     BrowserWebView \
     Apps \
-    ESmsSync
+    ESmsSync \
+    PwaPlayer
 
 # Required Lineage packages
 PRODUCT_PACKAGES += \
