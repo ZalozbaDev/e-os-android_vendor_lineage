@@ -136,16 +136,12 @@ PRODUCT_PACKAGES += \
     MozillaNlpBackend \
     OpenWeatherMapWeatherProvider \
     AccountManager \
-    MagicEarth \
-    PdfViewer \
     Camera \
     eDrive \
-    Weather \
     Notes \
     Tasks \
     NominatimNlpBackend \
     DroidGuard \
-    LibreOfficeViewer \
     OpenKeychain \
     Message \
     Browser \
@@ -153,6 +149,15 @@ PRODUCT_PACKAGES += \
     Apps \
     ESmsSync \
     PwaPlayer
+
+# Optional Applications
+ifeq ($(MINIMAL_APPS),false)
+PRODUCT_PACKAGES += \
+    MagicEarth \
+    PdfViewer \
+    Weather \
+    LibreOfficeViewer
+endif
 
 # Required Lineage packages
 PRODUCT_PACKAGES += \
