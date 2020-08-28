@@ -149,7 +149,8 @@ PRODUCT_PACKAGES += \
     BrowserWebView \
     Apps \
     ESmsSync \
-    PwaPlayer
+    PwaPlayer \
+    SeedVault
 
 # Optional Applications
 ifeq ($(MINIMAL_APPS),false)
