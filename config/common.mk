@@ -150,6 +150,10 @@ PRODUCT_PACKAGES += \
     ESmsSync \
     PwaPlayer
 
+ifeq ($(INCLUDE_BACKUP_APP),true)
+PRODUCT_PACKAGES += SeedVault
+endif
+
 # Optional Applications
 ifeq ($(MINIMAL_APPS),false)
 PRODUCT_PACKAGES += \
