@@ -15,10 +15,12 @@
     limitations under the License.
 -->
 <resources>
-    <color name="material_deep_teal_50">#ffd2e6ff</color>
-    <color name="material_deep_teal_100">#ffa5cdff</color>
-    <color name="material_deep_teal_200">#ff7bb6ff</color>
-    <color name="material_deep_teal_300">#ff57a2ff</color>
-    <color name="material_deep_teal_500">#ff077fff</color>
-    <color name="material_deep_teal_700">#ff1059b3</color>
+    <color name="material_deep_teal_200">#077fff</color>
+    <color name="material_deep_teal_500">#077fff</color>
+    <color name="material_deep_teal_700">#077fff</color>
+    <color name="accent_device_default_700">#077fff</color>
+    <color name="accent_device_default_dark">#077fff</color>
+    <color name="accent_device_default_light">#077fff</color>
+    <color name="accent_device_default">#077fff</color>
+
 </resources>
