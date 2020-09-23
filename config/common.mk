@@ -133,6 +133,12 @@ PRODUCT_PACKAGES += \
     ESmsSync \
     SystemUIWithLegacyRecents \
 
+
+# If MINIMAL_APPS is not set, set it to false by default.
+ifndef MINIMAL_APPS
+	MINIMAL_APPS := false
+endif
+
 # Optional Applications
 ifeq ($(MINIMAL_APPS),false)
 PRODUCT_PACKAGES += \
