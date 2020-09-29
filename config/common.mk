@@ -132,7 +132,10 @@ PRODUCT_PACKAGES += \
     Apps \
     ESmsSync \
     SystemUIWithLegacyRecents \
-
+    
+ifeq ($(INCLUDE_BACKUP_APP),true)
+PRODUCT_PACKAGES += SeedVault
+endif
 
 # If MINIMAL_APPS is not set, set it to false by default.
 ifndef MINIMAL_APPS
