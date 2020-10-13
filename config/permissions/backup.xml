@@ -23,5 +23,5 @@
     <backup-transport-whitelisted-service
         service="com.google.android.gms/.backup.component.D2dTransportService" />
     <backup-transport-whitelisted-service
-        service="com.stevesoltys.seedvault/.transport.ConfigurableBackupTransportService"/>
+        service="foundation.e.backup/.transport.ConfigurableBackupTransportService"/>
 </config>
