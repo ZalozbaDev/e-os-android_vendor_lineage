@@ -28,3 +28,12 @@ ADDITIONAL_BUILD_PROPERTIES += \
 # LineageOS Platform Internal Version
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.lineage.build.version.plat.rev=$(LINEAGE_PLATFORM_REV)
+
+# Insecure boot
+ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
+
+# LineageOS Platform Internal Version
+ADDITIONAL_BUILD_PROPERTIES += \
+    lineage.updater.uri=https://test.ota.ecloud.global/api/v1/{device}/{type}/{incr}
