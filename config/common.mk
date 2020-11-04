@@ -151,7 +151,7 @@ PRODUCT_PACKAGES += \
     PwaPlayer
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
-PRODUCT_PACKAGES += SeedVault
+PRODUCT_PACKAGES += Backup
 endif
 
 # Optional Applications
