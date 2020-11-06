@@ -136,6 +136,7 @@ PRODUCT_PACKAGES += \
     Apps \
     ESmsSync \
     SystemUIWithLegacyRecents \
+    PwaPlayer
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
 PRODUCT_PACKAGES += SeedVault
