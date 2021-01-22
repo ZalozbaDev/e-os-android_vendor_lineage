@@ -202,6 +202,15 @@ ifdef CUSTOM_PACKAGES
 PRODUCT_PACKAGES += $(CUSTOM_PACKAGES)
 endif
 
+# If TEST_BUILD is not set, set it to false by default.
+ifndef TEST_BUILD
+  TEST_BUILD := false
+endif
+
+ifeq ($(TEST_BUILD),true)
+  PRODUCT_PACKAGES += BlissLauncher_Test
+endif
+
 
 # Filesystems tools
 PRODUCT_PACKAGES += \
