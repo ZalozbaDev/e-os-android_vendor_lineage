@@ -157,7 +157,6 @@ ifeq ($(MINIMAL_APPS),false)
 PRODUCT_PACKAGES += \
     MagicEarth \
     PdfViewer \
-    Weather \
     LibreOfficeViewer
 endif
 
