@@ -117,6 +117,43 @@ PRODUCT_PACKAGES += \
     LineageSetupWizard \
     Updater
 
+# /e/ OS packages
+PRODUCT_PACKAGES += \
+    eSpeakTTS \
+    GmsCore \
+    GsfProxy \
+    FakeStore \
+    com.google.android.maps.jar \
+    Mail \
+    BlissLauncher \
+    BlissIconPack \
+    MozillaNlpBackend \
+    OpenWeatherMapWeatherProvider \
+    AccountManager \
+    Camera \
+    eDrive \
+    Notes \
+    Tasks \
+    NominatimNlpBackend \
+    DroidGuard \
+    OpenKeychain \
+    Message \
+    Browser \
+    BrowserWebView \
+    Apps \
+    ESmsSync \
+    PwaPlayer
+
+# Optional applications
+MINIMAL_APPS ?= false
+
+ifeq ($(MINIMAL_APPS),false)
+PRODUCT_PACKAGES += \
+    MagicEarth \
+    PdfViewer \
+    LibreOfficeViewer
+endif
+
 # Themes
 PRODUCT_PACKAGES += \
     LineageThemesStub \
