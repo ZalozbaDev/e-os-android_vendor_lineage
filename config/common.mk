@@ -51,7 +51,8 @@ PRODUCT_COPY_FILES += \
 
 # Pre-granted eos-permissions
 PRODUCT_COPY_FILES += \
-    vendor/lineage/config/permissions/eos-permissions.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/default-permissions/eos-permissions.xml
+    vendor/lineage/config/permissions/eos-permissions.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/default-permissions/eos-permissions.xml \
+    vendor/lineage/config/permissions/eos-allowlist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/eos-allowlist.xml
 
 # Copy all Lineage-specific init rc files
 $(foreach f,$(wildcard vendor/lineage/prebuilt/common/etc/init/*.rc),\
