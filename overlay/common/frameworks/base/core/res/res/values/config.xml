@@ -133,4 +133,7 @@
 
     <!-- Remote server that can provide NTP responses. -->
     <string translatable="false" name="config_ntpServer">pool.ntp.org</string>
+
+    <!-- IP address of the dns server to use if nobody else suggests one -->
+    <string name="config_default_dns_server" translatable="false">9.9.9.9</string>
 </resources>
