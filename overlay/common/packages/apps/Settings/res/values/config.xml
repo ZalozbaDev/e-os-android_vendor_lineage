@@ -38,4 +38,7 @@
 
     <!-- Manufacturer backup settings label -->
     <string name="config_backup_settings_label" translatable="true">@string/backup_transport_setting_label</string>
+
+    <!-- Whether private_dns_settings is available or not. -->
+    <bool name="config_show_private_dns_settings">false</bool>
 </resources>
