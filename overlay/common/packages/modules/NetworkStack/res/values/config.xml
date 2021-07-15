@@ -2,4 +2,10 @@
 <resources>
     <!-- Configuration for including DHCP client hostname option -->
     <bool name="config_dhcp_client_hostname">true</bool>
+
+    <!-- HTTP URL for network validation, to use for detecting captive portals. -->
+    <string name="default_captive_portal_http_url" translatable="false">http://204.ecloud.global</string>
+
+    <!-- HTTPS URL for network validation, to use for confirming internet connectivity. -->
+    <string name="default_captive_portal_https_url" translatable="false">https://connectivity.ecloud.global</string>
 </resources>
