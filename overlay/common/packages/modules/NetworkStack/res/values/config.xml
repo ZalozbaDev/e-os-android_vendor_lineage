@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- HTTP URL for network validation, to use for detecting captive portals. -->
+    <string name="default_captive_portal_http_url" translatable="false">http://204.ecloud.global</string>
+
+    <!-- HTTPS URL for network validation, to use for confirming internet connectivity. -->
+    <string name="default_captive_portal_https_url" translatable="false">https://connectivity.ecloud.global</string>
+</resources>
