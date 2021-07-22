@@ -89,18 +89,6 @@
         <permission name="android.permission.READ_PHONE_STATE" fixed="false"/>
     </exception>
 
-    <exception package="foundation.e.accountmanager">
-        <!-- Location -->
-        <permission name="android.permission.ACCESS_BACKGROUND_LOCATION" fixed="false"/>
-        <permission name="android.permission.ACCESS_FINE_LOCATION" fixed="false"/>
-        <!-- Calendar -->
-        <permission name="android.permission.READ_CALENDAR" fixed="false"/>
-        <permission name="android.permission.WRITE_CALENDAR" fixed="false"/>
-        <!-- Contacts -->
-        <permission name="android.permission.READ_CONTACTS" fixed="false"/>
-        <permission name="android.permission.WRITE_CONTACTS" fixed="false"/>
-    </exception>
-
     <exception package="foundation.e.esmssync">
         <!-- Contacts -->
         <permission name="android.permission.READ_CONTACTS" fixed="false"/>
