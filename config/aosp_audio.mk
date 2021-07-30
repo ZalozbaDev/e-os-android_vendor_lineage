@@ -16,21 +16,21 @@
 LOCAL_PATH := frameworks/base/data/sounds
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/Alarm_Beep_01.ogg:system/media/audio/alarms/Alarm_Beep_01.ogg \
-    $(LOCAL_PATH)/Alarm_Beep_02.ogg:system/media/audio/alarms/Alarm_Beep_02.ogg \
-    $(LOCAL_PATH)/Alarm_Beep_03.ogg:system/media/audio/alarms/Alarm_Beep_03.ogg \
-    $(LOCAL_PATH)/Alarm_Buzzer.ogg:system/media/audio/alarms/Alarm_Buzzer.ogg \
-    $(LOCAL_PATH)/Alarm_Rooster_02.ogg:system/media/audio/alarms/Alarm_Rooster_02.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Argon.ogg:system/media/audio/alarms/Argon-old.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Barium.ogg:system/media/audio/alarms/Barium.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Carbon.ogg:system/media/audio/alarms/Carbon-old.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Hassium.ogg:system/media/audio/alarms/Hassium.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Krypton.ogg:system/media/audio/alarms/Krypton-old.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Neon.ogg:system/media/audio/alarms/Neon-old.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Osmium.ogg:system/media/audio/alarms/Osmium-old.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Oxygen.ogg:system/media/audio/alarms/Oxygen-old.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Platinum.ogg:system/media/audio/alarms/Platinum-old.ogg \
-    $(LOCAL_PATH)/alarms/ogg/Scandium.ogg:system/media/audio/alarms/Scandium.ogg
+    $(LOCAL_PATH)/Alarm_Beep_01.ogg:system/media/audio/alarms/media/audio/alarms/Alarm_Beep_01.ogg \
+    $(LOCAL_PATH)/Alarm_Beep_02.ogg:system/media/audio/alarms/media/audio/alarms/Alarm_Beep_02.ogg \
+    $(LOCAL_PATH)/Alarm_Beep_03.ogg:system/media/audio/alarms/media/audio/alarms/Alarm_Beep_03.ogg \
+    $(LOCAL_PATH)/Alarm_Buzzer.ogg:system/media/audio/alarms/media/audio/alarms/Alarm_Buzzer.ogg \
+    $(LOCAL_PATH)/Alarm_Rooster_02.ogg:system/media/audio/alarms/media/audio/alarms/Alarm_Rooster_02.ogg \
+    $(LOCAL_PATH)/alarms/ogg/Barium.ogg:system/media/audio/alarms/media/audio/alarms/Barium.ogg \
+    $(LOCAL_PATH)/alarms/ogg/Hassium.ogg:system/media/audio/alarms/media/audio/alarms/Hassium.ogg \
+    $(LOCAL_PATH)/alarms/ogg/Scandium.ogg:system/media/audio/alarms/media/audio/alarms/Scandium.ogg \
+    vendor/lineage/prebuilt/common/media/audio/alarms/Argon-old.ogg:system/media/audio/alarms/media/audio/alarms/Argon-old.ogg \
+    vendor/lineage/prebuilt/common/media/audio/alarms/Carbon-old.ogg:system/media/audio/alarms/media/audio/alarms/Carbon-old.ogg \
+    vendor/lineage/prebuilt/common/media/audio/alarms/Krypton-old.ogg:system/media/audio/alarms/media/audio/alarms/Krypton-old.ogg \
+    vendor/lineage/prebuilt/common/media/audio/alarms/Neon-old.ogg:system/media/audio/alarms/media/audio/alarms/Neon-old.ogg \
+    vendor/lineage/prebuilt/common/media/audio/alarms/Osmium-old.ogg:system/media/audio/alarms/media/audio/alarms/Osmium-old.ogg \
+    vendor/lineage/prebuilt/common/media/audio/alarms/Oxygen-old.ogg:system/media/audio/alarms/media/audio/alarms/Oxygen-old.ogg \
+    vendor/lineage/prebuilt/common/media/audio/alarms/Platinum-old.ogg:system/media/audio/alarms/media/audio/alarms/Platinum-old.ogg
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/F1_New_SMS.ogg:system/media/audio/notifications/F1_New_SMS.ogg \
