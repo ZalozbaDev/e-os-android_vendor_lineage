@@ -41,4 +41,13 @@
 
     <!-- Whether private_dns_settings is available or not. -->
     <bool name="config_show_private_dns_settings">false</bool>
+
+    <!--
+        Whether or not the homepage should be powered by legacy suggestion (versus contextual cards)
+        Default to true as not all devices support contextual cards.
+    -->
+    <bool name="config_use_legacy_suggestion">false</bool>
+
+    <!-- Email address for the homepage contextual cards feedback -->
+    <string name="config_contextual_card_feedback_email" translatable="false">contact@e.email</string>
 </resources>
