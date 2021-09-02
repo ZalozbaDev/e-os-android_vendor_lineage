@@ -34,3 +34,7 @@ ADDITIONAL_BUILD_PROPERTIES += \
 # LineageOS Platform Internal Version
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.lineage.build.version.plat.rev=$(LINEAGE_PLATFORM_REV)
+
+# Expose all cameras to our camera app
+ADDITIONAL_BUILD_PROPERTIES += \
+    camera.aux.packagelist=foundation.e.camera
