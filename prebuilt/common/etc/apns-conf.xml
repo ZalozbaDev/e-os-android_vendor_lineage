@@ -3187,7 +3187,7 @@
   <apn carrier="Celcom 2G MMS" mcc="502" mnc="19" apn="mms.celcom.net.my" mmsc="http://mms.celcom.net.my" mmsproxy="10.128.1.242" mmsport="8080" type="mms" />
   <apn carrier="Telstra Internet" mcc="505" mnc="01" apn="telstra.wap" user="" password="" type="default,supl" />
   <apn carrier="Telstra Broadband" mcc="505" mnc="01" apn="telstra.internet" user="" password="" type="dun" />
-  <apn carrier="Telstra MMS" mcc="505" mnc="01" apn="telstra.mms" proxy="" port="" mmsproxy="10.1.1.180" mmsport="80" mmsc="http://mmsc.telstra.com:8002" user="" password="" type="mms" />
+  <apn carrier="Telstra MMS" mcc="505" mnc="01" apn="telstra.mms" proxy="" port="" mmsproxy="10.1.1.180" mmsport="80" mmsc="http://mmsc.telstra.com:8002" user="" password="" type="mms" protocol="IPV4V6" roaming_protocol="IPV4"/>
   <apn carrier="Telstra MMS" mcc="505" mnc="01" apn="Telstra.mms" mmsc="http://mmsc.telstra.com:8002" mmsproxy="10.1.1.180" mmsport="80" type="mms" />
   <apn carrier="Telstra Internet" mcc="505" mnc="01" apn="Telstra.wap" type="default,supl" />
   <apn carrier="Telstra w/ Portal" mcc="505" mnc="01" apn="telstra.internet" proxy="10.1.1.181" port="80" mmsc="http://mmsc.telstra.com:8002" mmsproxy="10.1.1.181" mmsport="80" type="default,supl,mms" />
