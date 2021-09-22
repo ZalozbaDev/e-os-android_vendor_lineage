@@ -99,6 +99,9 @@
         <!-- Contacts -->
         <permission name="android.permission.READ_CONTACTS" fixed="false"/>
         <permission name="android.permission.WRITE_CONTACTS" fixed="false"/>
+        <!-- Tasks -->
+        <permission name="android.permission.READ_TASKS" fixed="false"/>
+        <permission name="android.permission.WRITE_TASKS" fixed="false"/>
     </exception>
 
     <exception package="foundation.e.esmssync">
