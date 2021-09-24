@@ -3199,6 +3199,8 @@
   <apn carrier="Optus Business Mobile Broadband" mcc="505" mnc="02" apn="yesbusiness" user="" password="" type="default,supl" />
   <apn carrier="Optus MMS" mcc="505" mnc="02" apn="mms" proxy="" port="" mmsproxy="61.88.190.10" mmsport="8070" mmsc="http://mmsc.optus.com.au:8002/" user="" password="" type="mms" />
   <apn carrier="Optus Streaming" mcc="505" mnc="02" apn="yesinternet" proxy="172.22.1.3" port="554" mmsc="" user="" password="" type="default,supl" />
+  <apn carrier="amaysim internet" mcc="505" mnc="02" apn="yesinternet" user="" password="" type="default" authtype="1" />
+  <apn carrier="amaysim MMS" mcc="505" mnc="02" apn="MMS" proxy="" port="" mmsproxy="61.88.190.10" mmsport="8070" mmsc="http://mmsc.optus.com.au:8002/" user="" password="" type="mms" authtype="1" />
   <apn carrier="Exetel" mcc="505" mnc="02" apn="exetel1" type="default,supl" />
   <apn carrier="Optus" mcc="505" mnc="02" apn="internet" type="default,supl" />
   <apn carrier="Optus MMS" mcc="505" mnc="02" apn="mms" user="*" password="*" server="*" proxy="202.139.83.152" port="8070" mmsc="http://mmsc.optus.com.au:8002/" mmsproxy="61.88.190.10" mmsport="8070" type="mms" />
