@@ -20,5 +20,6 @@
     <allow-in-power-save package="com.google.android.gms" />
     <allow-in-power-save package="foundation.e.accountmanager" />
     <allow-in-power-save package="foundation.e.mail" />
+    <allow-in-power-save package="foundation.e.apps" />
 </config>
 
