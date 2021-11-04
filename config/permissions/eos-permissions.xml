@@ -129,5 +129,11 @@
         <permission name="android.permission.WRITE_EXTERNAL_STORAGE" fixed="false"/>
     </exception>
 
+    <exception package="foundation.e.accountmanager">
+        <!-- Tasks -->
+        <permission name="foundation.e.permission.READ_TASKS" fixed="false"/>
+        <permission name="foundation.e.permission.WRITE_TASKS" fixed="false"/>
+    </exception>
+
 </exceptions>
 
