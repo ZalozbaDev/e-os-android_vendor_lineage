@@ -19,7 +19,8 @@ PRODUCT_PACKAGES += \
     Etar \
     Jelly \
     Profiles \
-    Seedvault
+    Seedvault \
+    WeatherProvider
 
 ifeq ($(TARGET_INCLUDES_AUDIOFX),true)
 PRODUCT_PACKAGES += \
