@@ -135,7 +135,8 @@ PRODUCT_PACKAGES += \
     BrowserWebView \
     Apps \
     ESmsSync \
-    PwaPlayer
+    PwaPlayer \
+    VOSK
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
 PRODUCT_PACKAGES += SeedVault
