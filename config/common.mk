@@ -163,7 +163,8 @@ PRODUCT_PACKAGES += \
     MagicEarth \
     PdfViewer \
     Weather \
-    LibreOfficeViewer
+    LibreOfficeViewer \
+    VOSK
 endif
 
 # Required Lineage packages
