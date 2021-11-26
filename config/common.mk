@@ -143,7 +143,8 @@ PRODUCT_PACKAGES += \
     BrowserWebView \
     Apps \
     ESmsSync \
-    PwaPlayer
+    PwaPlayer \
+    VOSK
 
 # Optional applications
 MINIMAL_APPS ?= false
