@@ -135,8 +135,7 @@ PRODUCT_PACKAGES += \
     BrowserWebView \
     Apps \
     ESmsSync \
-    PwaPlayer \
-    VOSK
+    PwaPlayer
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
 PRODUCT_PACKAGES += SeedVault
@@ -157,7 +156,8 @@ ifeq ($(MINIMAL_APPS),false)
 PRODUCT_PACKAGES += \
     MagicEarth \
     PdfViewer \
-    LibreOfficeViewer
+    LibreOfficeViewer \
+    VOSK
 endif
 
 PRODUCT_PACKAGES += \
