@@ -118,6 +118,7 @@ PRODUCT_PACKAGES += \
     FakeStore \
     com.google.android.maps.jar \
     Mail \
+    TestService \
     BlissLauncher \
     BlissIconPack \
     MozillaNlpBackend \
