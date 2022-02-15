@@ -137,7 +137,8 @@ PRODUCT_PACKAGES += \
     Browser \
     BrowserWebView \
     Apps \
-    PwaPlayer
+    PwaPlayer \
+    PrivacyCentral
 
 # Optional applications
 MINIMAL_APPS ?= false
