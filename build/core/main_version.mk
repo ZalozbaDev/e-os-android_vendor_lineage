@@ -34,3 +34,13 @@ ADDITIONAL_BUILD_PROPERTIES += \
 # LineageOS Platform Internal Version
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.lineage.build.version.plat.rev=$(LINEAGE_PLATFORM_REV)
+
+# Allow disabling debugging flags set by the build system
+# for 3rd party apps support.
+ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+  ifeq ($(DISABLE_TARGET_DEBUGGING),true)
+    ADDITIONAL_BUILD_PROPERTIES += ro.debuggable=0
+    ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.lockprof.threshold=0
+  endif
+endif
+
