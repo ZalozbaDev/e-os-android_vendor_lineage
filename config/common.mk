@@ -149,7 +149,6 @@ PRODUCT_PACKAGES += \
     Browser \
     BrowserWebView \
     Apps \
-    ESmsSync \
     PwaPlayer
 
 # If MINIMAL_APPS is not set, set it to false by default.
