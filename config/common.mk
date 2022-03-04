@@ -147,7 +147,6 @@ PRODUCT_PACKAGES += \
     Browser \
     BrowserWebView \
     Apps \
-    ESmsSync \
     PwaPlayer
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
