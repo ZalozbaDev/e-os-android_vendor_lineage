@@ -142,7 +142,6 @@ PRODUCT_PACKAGES += \
     Browser \
     BrowserWebView \
     Apps \
-    ESmsSync \
     PwaPlayer
 
 # Optional applications
