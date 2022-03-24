@@ -367,5 +367,8 @@ endif
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/lineage/config/partner_gms.mk
 
+# Include configuration for eos
+$(call inherit-product, vendor/eos/config/common.mk)
+
 # Include configuration for partners
 $(call inherit-product-if-exists, vendor/partner/$(BUILD_PARTNER)/config/$(BUILD_PARTNER).mk)
