@@ -63,3 +63,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # SystemUI plugins
 PRODUCT_PACKAGES += \
     QuickAccessWallet
+
+# Include configuration for eos
+$(call inherit-product, vendor/eos/config/common_mobile.mk)
