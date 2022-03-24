@@ -19,3 +19,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # (for devices that check this)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     net.tethering.noprovisioning=true
+
+# Include configuration for eos
+$(call inherit-product, vendor/eos/config/telephony.mk)

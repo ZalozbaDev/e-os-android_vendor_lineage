@@ -76,3 +76,6 @@ PRODUCT_PACKAGES += \
     LineageBlackTheme \
     ThemePicker \
     ThemesStub
+
+# Include configuration for eos
+$(call inherit-product, vendor/eos/config/common_mobile.mk)
