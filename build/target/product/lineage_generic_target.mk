@@ -22,3 +22,7 @@ TARGET_FORCE_OTA_PACKAGE := true
 
 PRODUCT_SDK_ADDON_NAME := lineage
 PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties
+
+# CustomLocale
+PRODUCT_PACKAGES += \
+    CustomLocale
