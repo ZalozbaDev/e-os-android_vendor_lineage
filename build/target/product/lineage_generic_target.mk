@@ -19,3 +19,7 @@ PRODUCT_COPY_FILES += \
 
 # Allow building otatools
 TARGET_FORCE_OTA_PACKAGE := true
+
+# CustomLocale
+PRODUCT_PACKAGES += \
+    CustomLocale
