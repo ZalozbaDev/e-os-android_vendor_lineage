@@ -134,7 +134,8 @@ PRODUCT_PACKAGES += \
     Browser \
     BrowserWebView \
     Apps \
-    PwaPlayer
+    PwaPlayer \
+    PrivacyCentral
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
 PRODUCT_PACKAGES += SeedVault
