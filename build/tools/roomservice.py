@@ -322,9 +322,13 @@ else:
             default_revision = get_default_revision()
             print("Default revision: %s" % default_revision)
             print("Checking branch info")
-            githubreq = urllib.request.Request(repository['branches_url'].replace('{/branch}', ''))
-            add_auth(githubreq)
-            result = json.loads(urllib.request.urlopen(githubreq).read().decode())
+            if reposFromE:
+                gitlabreq = urllib.request.Request("{}/projects/{}/repository/branches".format(gitlabApiUrl, repository['id']))
+                result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
+            else:
+                githubreq = urllib.request.Request(repository['branches_url'].replace('{/branch}', ''))
+                add_auth(githubreq)
+                result = json.loads(urllib.request.urlopen(githubreq).read().decode())
 
             ## Try tags, too, since that's what releases use
             if not has_branch(result, default_revision):
