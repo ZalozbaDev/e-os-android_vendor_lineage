@@ -152,6 +152,10 @@ def get_default_revision():
     m = ElementTree.parse(get_manifest_path())
     d = m.findall('default')[0]
     r = d.get('revision')
+    if reposFromE:
+        for remote in m.findall('remote'):
+            if 'e' == remote.get('name'):
+                r = remote.get('revision')
     return r.replace('refs/heads/', '').replace('refs/tags/', '')
 
 def get_from_manifest(devicename):
