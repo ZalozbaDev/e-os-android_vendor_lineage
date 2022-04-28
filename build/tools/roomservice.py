@@ -60,7 +60,6 @@ reposFromE = True
 
 def getReposFromE():
     searchLink = "{}/projects?search={}".format(gitlabApiUrl, device)
-    print(searchLink)
     gitlabreq = urllib.request.Request(searchLink)
     try:
         result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
@@ -202,6 +201,21 @@ def is_in_manifest(projectpath):
             return True
 
     return False
+
+def isOnE(repository):
+    searchLink = "{}/projects?search={}".format(gitlabApiUrl, repository)
+    gitlabreq = urllib.request.Request(searchLink)
+    try:
+        result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
+        if result:
+            return True
+    except urllib.error.URLError:
+        print("Failed to search Gitlab")
+        return False
+    except ValueError:
+        print("Failed to parse return data from Gitlab")
+        return False
+
 
 def add_to_manifest(repositories, fallback_branch = None):
     try:
