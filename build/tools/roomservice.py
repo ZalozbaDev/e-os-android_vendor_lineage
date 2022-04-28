@@ -40,6 +40,7 @@ except ImportError:
 from xml.etree import ElementTree
 
 product = sys.argv[1]
+gitlabApiUrl = "https://gitlab.e.foundation/api/v4"
 
 if len(sys.argv) > 2:
     depsonly = sys.argv[2]
@@ -52,9 +53,27 @@ except:
     device = product
 
 if not depsonly:
-    print("Device %s not found. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
+    print("Device %s not found. Attempting to retrieve device repository from E foundation Gitlab (https://gitlab.e.foundation)." % device)
 
 repositories = []
+reposFromE = True
+
+def getReposFromE():
+    searchLink = "{}/projects?search={}".format(gitlabApiUrl, device)
+    print(searchLink)
+    gitlabreq = urllib.request.Request(searchLink)
+    try:
+        result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
+        for res in result:
+            repositories.append(res)
+    except urllib.error.URLError:
+        print("Failed to search Gitlab")
+        reposFromE = False
+        getReposFromLineage()
+    except ValueError:
+        print("Failed to parse return data from Gitlab")
+        reposFromE = False
+        getReposFromLineage()
 
 try:
     authtuple = netrc.netrc().authenticators("api.github.com")
@@ -71,7 +90,9 @@ def add_auth(githubreq):
     if githubauth:
         githubreq.add_header("Authorization","Basic %s" % githubauth)
 
-if not depsonly:
+def getReposFromLineage():
+    print("Device %s not found in e. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
+    reposFromE = False
     githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
     add_auth(githubreq)
     try:
@@ -84,6 +105,11 @@ if not depsonly:
         sys.exit(1)
     for res in result.get('items', []):
         repositories.append(res)
+
+if not depsonly:
+    getReposFromE()
+    if not repositories:
+        getReposFromLineage()
 
 local_manifests = r'.repo/local_manifests'
 if not os.path.exists(local_manifests): os.makedirs(local_manifests)
