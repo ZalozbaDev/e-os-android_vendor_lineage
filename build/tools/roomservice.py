@@ -326,9 +326,13 @@ else:
 
             ## Try tags, too, since that's what releases use
             if not has_branch(result, default_revision):
-                githubreq = urllib.request.Request(repository['tags_url'].replace('{/tag}', ''))
-                add_auth(githubreq)
-                result.extend (json.loads(urllib.request.urlopen(githubreq).read().decode()))
+                if reposFromE:
+                  gitlabreq = urllib.request.Request("{}/projects/{}/repository/tags".format(gitlabApiUrl, repository['id']))
+                  result.extend (json.loads(urllib.request.urlopen(gitlabreq).read().decode()))  
+                else:
+                    githubreq = urllib.request.Request(repository['tags_url'].replace('{/tag}', ''))
+                    add_auth(githubreq)
+                    result.extend (json.loads(urllib.request.urlopen(githubreq).read().decode()))
             
             repo_path = "device/%s/%s" % (manufacturer, device)
             adding = {'repository':repo_name,'target_path':repo_path}
