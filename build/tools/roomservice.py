@@ -58,7 +58,18 @@ if not depsonly:
 repositories = []
 reposFromE = True
 
+try:
+    authtuple = netrc.netrc().authenticators("api.github.com")
+    if authtuple:
+        auth_string = ('%s:%s' % (authtuple[0], authtuple[2])).encode()
+        githubauth = base64.encodestring(auth_string).decode().replace('\n', '')
+    else:
+        githubauth = None
+except:
+    githubauth = None
+
 def getRepos():
+    reposFromE = True
     searchLink = "{}/projects?search={}".format(gitlabApiUrl, device)
     gitlabreq = urllib.request.Request(searchLink)
     try:
@@ -71,15 +82,6 @@ def getRepos():
     except ValueError:
         print("Failed to parse return data from Gitlab")
         reposFromE = False
-    try:
-        authtuple = netrc.netrc().authenticators("api.github.com")
-        if authtuple:
-            auth_string = ('%s:%s' % (authtuple[0], authtuple[2])).encode()
-            githubauth = base64.encodestring(auth_string).decode().replace('\n', '')
-        else:
-            githubauth = None
-    except:
-        githubauth = None
     if not reposFromE:
         print("Device %s not found in e. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
         githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
