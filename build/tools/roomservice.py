@@ -58,7 +58,7 @@ if not depsonly:
 repositories = []
 reposFromE = True
 
-def getReposFromE():
+def getRepos():
     searchLink = "{}/projects?search={}".format(gitlabApiUrl, device)
     gitlabreq = urllib.request.Request(searchLink)
     try:
@@ -68,47 +68,39 @@ def getReposFromE():
     except urllib.error.URLError:
         print("Failed to search Gitlab")
         reposFromE = False
-        getReposFromLineage()
     except ValueError:
         print("Failed to parse return data from Gitlab")
         reposFromE = False
-        getReposFromLineage()
-
-try:
-    authtuple = netrc.netrc().authenticators("api.github.com")
-
-    if authtuple:
-        auth_string = ('%s:%s' % (authtuple[0], authtuple[2])).encode()
-        githubauth = base64.encodestring(auth_string).decode().replace('\n', '')
-    else:
+    try:
+        authtuple = netrc.netrc().authenticators("api.github.com")
+        if authtuple:
+            auth_string = ('%s:%s' % (authtuple[0], authtuple[2])).encode()
+            githubauth = base64.encodestring(auth_string).decode().replace('\n', '')
+        else:
+            githubauth = None
+    except:
         githubauth = None
-except:
-    githubauth = None
+    if not reposFromE:
+        print("Device %s not found in e. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
+        githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
+        add_auth(githubreq)
+        try:
+            result = json.loads(urllib.request.urlopen(githubreq).read().decode())
+        except urllib.error.URLError:
+            print("Failed to search GitHub")
+            sys.exit(1)
+        except ValueError:
+            print("Failed to parse return data from GitHub")
+            sys.exit(1)
+        for res in result.get('items', []):
+            repositories.append(res)
 
 def add_auth(githubreq):
     if githubauth:
         githubreq.add_header("Authorization","Basic %s" % githubauth)
 
-def getReposFromLineage():
-    print("Device %s not found in e. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
-    reposFromE = False
-    githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
-    add_auth(githubreq)
-    try:
-        result = json.loads(urllib.request.urlopen(githubreq).read().decode())
-    except urllib.error.URLError:
-        print("Failed to search GitHub")
-        sys.exit(1)
-    except ValueError:
-        print("Failed to parse return data from GitHub")
-        sys.exit(1)
-    for res in result.get('items', []):
-        repositories.append(res)
-
 if not depsonly:
-    getReposFromE()
-    if not repositories:
-        getReposFromLineage()
+    getRepos()
 
 local_manifests = r'.repo/local_manifests'
 if not os.path.exists(local_manifests): os.makedirs(local_manifests)
