@@ -56,7 +56,6 @@ if not depsonly:
     print("Device %s not found. Attempting to retrieve device repository from E foundation Gitlab (https://gitlab.e.foundation)." % device)
 
 repositories = []
-reposFromE = True
 
 try:
     authtuple = netrc.netrc().authenticators("api.github.com")
@@ -69,6 +68,7 @@ except:
     githubauth = None
 
 def getRepos():
+    global reposFromE
     reposFromE = True
     searchLink = "{}/projects?search={}".format(gitlabApiUrl, device)
     gitlabreq = urllib.request.Request(searchLink)
@@ -82,12 +82,13 @@ def getRepos():
     except ValueError:
         print("Failed to parse return data from Gitlab")
         reposFromE = False
-    if not reposFromE:
+    if not repositories:
         print("Device %s not found in e. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
         githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
         add_auth(githubreq)
         try:
             result = json.loads(urllib.request.urlopen(githubreq).read().decode())
+            reposFromE = False
         except urllib.error.URLError:
             print("Failed to search GitHub")
             sys.exit(1)
@@ -317,6 +318,7 @@ else:
             print("Default revision: %s" % default_revision)
             print("Checking branch info")
             if reposFromE:
+                print(reposFromE)
                 gitlabreq = urllib.request.Request("{}/projects/{}/repository/branches".format(gitlabApiUrl, repository['id']))
                 result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
             else:
