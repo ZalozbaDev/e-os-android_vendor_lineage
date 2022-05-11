@@ -113,22 +113,15 @@ PRODUCT_PACKAGES += \
 # Required /e/ packages
 PRODUCT_PACKAGES += \
     eSpeakTTS \
-    GmsCore \
-    GsfProxy \
-    FakeStore \
-    com.google.android.maps.jar \
     Mail \
     BlissLauncher \
     BlissIconPack \
-    MozillaNlpBackend \
     OpenWeatherMapWeatherProvider \
     AccountManager \
     Camera \
     eDrive \
     Notes \
     Tasks \
-    NominatimNlpBackend \
-    DroidGuard \
     OpenKeychain \
     Message \
     Browser \
