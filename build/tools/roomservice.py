@@ -70,7 +70,8 @@ except:
 def getRepos():
     global reposFromE
     reposFromE = True
-    searchLink = "{}/projects?search={}".format(gitlabApiUrl, device)
+    searchLink = "{}/projects?search=_{} device".format(gitlabApiUrl, device)
+    searchLink = searchLink.replace(' ', '%20')
     gitlabreq = urllib.request.Request(searchLink)
     try:
         result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
@@ -318,8 +319,7 @@ else:
             print("Default revision: %s" % default_revision)
             print("Checking branch info")
             if reposFromE:
-                print(reposFromE)
-                gitlabreq = urllib.request.Request("{}/projects/{}/repository/branches".format(gitlabApiUrl, repository['id']))
+                gitlabreq = urllib.request.Request("{}/projects/{}/repository/branches?search={}".format(gitlabApiUrl, repository['id'], default_revision))
                 result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
             else:
                 githubreq = urllib.request.Request(repository['branches_url'].replace('{/branch}', ''))
