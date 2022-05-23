@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # Copyright (C) 2012-2013, The CyanogenMod Project
 #           (C) 2017-2018,2020-2021, The LineageOS Project
+#           (C) 2022, ECORP SAS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -53,7 +54,7 @@ except:
     device = product
 
 if not depsonly:
-    print("Device %s not found. Attempting to retrieve device repository from E foundation Gitlab (https://gitlab.e.foundation)." % device)
+    print("Device %s not found. Attempting to retrieve device repository from E FOUNDATION Gitlab (https://gitlab.e.foundation)." % device)
 
 repositories = []
 
