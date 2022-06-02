@@ -78,11 +78,8 @@ def getRepos():
         result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
         for res in result:
             repositories.append(res)
-    except urllib.error.URLError:
-        print("Failed to search Gitlab")
-        reposFromE = False
-    except ValueError:
-        print("Failed to parse return data from Gitlab")
+    except:
+        print("Failed to search Gitlab or could not parse return data from Gitlab")
         reposFromE = False
     if not repositories:
         print("Device %s not found in e. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
@@ -91,11 +88,8 @@ def getRepos():
         try:
             result = json.loads(urllib.request.urlopen(githubreq).read().decode())
             reposFromE = False
-        except urllib.error.URLError:
-            print("Failed to search GitHub")
-            sys.exit(1)
-        except ValueError:
-            print("Failed to parse return data from GitHub")
+        except:
+            print("Failed to search GitHub or could not parse return data from GitHub")
             sys.exit(1)
         for res in result.get('items', []):
             repositories.append(res)
@@ -210,11 +204,8 @@ def isOnE(repository):
         result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
         if result:
             return True
-    except urllib.error.URLError:
-        print("Failed to search Gitlab")
-        return False
-    except ValueError:
-        print("Failed to parse return data from Gitlab")
+    except:
+        print("Failed to search Gitlab or could not parse return data from Gitlab")
         return False
 
 
