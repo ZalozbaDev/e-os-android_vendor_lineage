@@ -41,7 +41,7 @@ except ImportError:
 from xml.etree import ElementTree
 
 product = sys.argv[1]
-gitlabApiUrl = "https://gitlab.e.foundation/api/v4"
+gitlab_api_url = "https://gitlab.e.foundation/api/v4"
 
 if len(sys.argv) > 2:
     depsonly = sys.argv[2]
@@ -69,25 +69,25 @@ except:
     githubauth = None
 
 def getRepos():
-    global reposFromE
-    reposFromE = True
-    searchLink = "{}/projects?search=_{} device".format(gitlabApiUrl, device)
-    searchLink = searchLink.replace(' ', '%20')
-    gitlabreq = urllib.request.Request(searchLink)
+    global repos_from_e
+    repos_from_e = True
+    search_link = "{}/projects?search=_{} device".format(gitlab_api_url, device)
+    search_link = search_link.replace(' ', '%20')
+    gitlabreq = urllib.request.Request(search_link)
     try:
         result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
         for res in result:
             repositories.append(res)
     except:
         print("Failed to search Gitlab or could not parse return data from Gitlab")
-        reposFromE = False
+        repos_from_e = False
     if not repositories:
         print("Device %s not found in e. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
         githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
         add_auth(githubreq)
         try:
             result = json.loads(urllib.request.urlopen(githubreq).read().decode())
-            reposFromE = False
+            repos_from_e = False
         except:
             print("Failed to search GitHub or could not parse return data from GitHub")
             sys.exit(1)
@@ -143,7 +143,7 @@ def get_default_revision():
     m = ElementTree.parse(get_manifest_path())
     d = m.findall('default')[0]
     r = d.get('revision')
-    if reposFromE:
+    if repos_from_e:
         for remote in m.findall('remote'):
             if 'e' == remote.get('name'):
                 r = remote.get('revision')
@@ -197,9 +197,9 @@ def is_in_manifest(projectpath):
 
     return False
 
-def isOnE(repository):
-    searchLink = "{}/projects?search={}".format(gitlabApiUrl, repository)
-    gitlabreq = urllib.request.Request(searchLink)
+def is_on_e(repository):
+    search_link = "{}/projects?search={}".format(gitlab_api_url, repository)
+    gitlabreq = urllib.request.Request(search_link)
     try:
         result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
         if result:
@@ -225,7 +225,7 @@ def add_to_manifest(repositories, fallback_branch = None):
             continue
 
         print('Adding dependency: %s -> %s' % (repo_name, repo_target))
-        if reposFromE and isOnE(repo_name):
+        if repos_from_e and is_on_e(repo_name):
             project = ElementTree.Element("project", attrib = { "path": repo_target,
                 "remote": "e", "name": "e/devices/%s" % repo_name })
         else:
@@ -310,8 +310,8 @@ else:
             default_revision = get_default_revision()
             print("Default revision: %s" % default_revision)
             print("Checking branch info")
-            if reposFromE:
-                gitlabreq = urllib.request.Request("{}/projects/{}/repository/branches?search={}".format(gitlabApiUrl, repository['id'], default_revision))
+            if repos_from_e:
+                gitlabreq = urllib.request.Request("{}/projects/{}/repository/branches?search={}".format(gitlab_api_url, repository['id'], default_revision))
                 result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
             else:
                 githubreq = urllib.request.Request(repository['branches_url'].replace('{/branch}', ''))
@@ -320,8 +320,8 @@ else:
 
             ## Try tags, too, since that's what releases use
             if not has_branch(result, default_revision):
-                if reposFromE:
-                  gitlabreq = urllib.request.Request("{}/projects/{}/repository/tags".format(gitlabApiUrl, repository['id']))
+                if repos_from_e:
+                  gitlabreq = urllib.request.Request("{}/projects/{}/repository/tags".format(gitlab_api_url, repository['id']))
                   result.extend (json.loads(urllib.request.urlopen(gitlabreq).read().decode()))  
                 else:
                     githubreq = urllib.request.Request(repository['tags_url'].replace('{/tag}', ''))
