@@ -74,10 +74,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lineage/config/permissions/org.lineageos.android.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.android.xml
 
-# Disable remote keyguard animation
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.wm.enable_remote_keyguard_animation=0
-
 # Enforce privapp-permissions whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
@@ -122,6 +118,7 @@ PRODUCT_COPY_FILES += \
 
 # Themes
 PRODUCT_PACKAGES += \
+    LineageBlackTheme \
     LineageThemesStub \
     ThemePicker
 
@@ -199,6 +196,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/lineage/overlay/no-rro
 
 PRODUCT_PACKAGES += \
+    NetworkStackOverlay \
     TrebuchetOverlay
 
 # Translations
