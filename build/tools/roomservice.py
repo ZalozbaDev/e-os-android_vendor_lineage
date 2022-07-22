@@ -71,7 +71,7 @@ except:
 def getRepos():
     global repos_from_e
     repos_from_e = True
-    search_link = "{}/projects?search=_{} device".format(gitlab_api_url, device)
+    search_link = "{}/groups/230/projects?search=_{} device".format(gitlab_api_url, device)
     search_link = search_link.replace(' ', '%20')
     gitlabreq = urllib.request.Request(search_link)
     try:
