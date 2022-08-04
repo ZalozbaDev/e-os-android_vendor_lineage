@@ -135,7 +135,8 @@ PRODUCT_PACKAGES += \
     BrowserWebView \
     Apps \
     PwaPlayer \
-    PrivacyCentral
+    PrivacyCentral \
+    SplitInstallService
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
 PRODUCT_PACKAGES += SeedVault
