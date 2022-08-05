@@ -16,7 +16,7 @@ PRODUCT_PACKAGES += \
     Profiles \
     Seedvault
 
-ifneq ($(TARGET_EXCLUDES_AUDIOFX),true)
+ifeq ($(TARGET_INCLUDES_AUDIOFX),true)
 PRODUCT_PACKAGES += \
     AudioFX
 endif
@@ -63,3 +63,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # SystemUI plugins
 PRODUCT_PACKAGES += \
     QuickAccessWallet
+
+# Include configuration for eos
+$(call inherit-product, vendor/eos/config/common_mobile.mk)

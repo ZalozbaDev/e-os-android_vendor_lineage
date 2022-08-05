@@ -211,4 +211,6 @@ include vendor/lineage/config/version.mk
 -include vendor/lineage-priv/keys/keys.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
--include vendor/lineage/config/partner_gms.mk
+
+# Include configuration for eos
+$(call inherit-product, vendor/eos/config/common.mk)
