@@ -138,7 +138,8 @@ PRODUCT_PACKAGES += \
     BrowserWebView \
     Apps \
     PwaPlayer \
-    PrivacyCentral
+    PrivacyCentral \
+    SplitInstallService
 
 # Optional applications
 MINIMAL_APPS ?= false
