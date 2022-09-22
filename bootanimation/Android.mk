@@ -17,8 +17,10 @@
 
 ifeq ($(TARGET_USES_MURENA_BOOTANIMATION),true)
 BOOTANIMATION_TAR = bootanimation_murena.tar
+BOOTANIMATION_FPS := 30
 else
 BOOTANIMATION_TAR = bootanimation.tar
+BOOTANIMATION_FPS := 60
 endif
 
 TARGET_GENERATED_BOOTANIMATION := $(TARGET_OUT_INTERMEDIATES)/BOOTANIMATION/bootanimation.zip
@@ -52,7 +54,8 @@ $(TARGET_GENERATED_BOOTANIMATION): $(SOONG_ZIP)
 	    mkdir -p $(INTERMEDIATES)/part$$part_cnt; \
 	done; \
 	prebuilts/tools-lineage/${HOST_OS}-x86/bin/mogrify -resize $$RESOLUTION -colors 250 $(INTERMEDIATES)/*/*.png; \
-	echo "$$IMAGESCALEWIDTH $$IMAGESCALEHEIGHT 60" > $(INTERMEDIATES)/desc.txt; \
+	BOOTANIMFPS=$(BOOTANIMATION_FPS); \
+	echo "$$IMAGESCALEWIDTH $$IMAGESCALEHEIGHT $$BOOTANIMFPS" > $(INTERMEDIATES)/desc.txt; \
 	cat vendor/lineage/bootanimation/desc.txt >> $(INTERMEDIATES)/desc.txt
 	$(hide) $(SOONG_ZIP) -L 0 -o $(TARGET_GENERATED_BOOTANIMATION) -C $(INTERMEDIATES) -D $(INTERMEDIATES)
 
