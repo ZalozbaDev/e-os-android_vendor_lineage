@@ -147,8 +147,8 @@ MINIMAL_APPS ?= false
 ifeq ($(MINIMAL_APPS),false)
 PRODUCT_PACKAGES += \
     MagicEarth \
-    PdfViewer \
-    LibreOfficeViewer
+    PdfViewer 
+    
 endif
 
 # Themes
