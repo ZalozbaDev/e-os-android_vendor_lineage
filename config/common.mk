@@ -156,8 +156,7 @@ endif
 ifeq ($(MINIMAL_APPS),false)
 PRODUCT_PACKAGES += \
     MagicEarth \
-    PdfViewer \
-    LibreOfficeViewer
+    PdfViewer 
 endif
 
 PRODUCT_PACKAGES += \
