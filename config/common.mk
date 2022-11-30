@@ -136,7 +136,8 @@ PRODUCT_PACKAGES += \
     Apps \
     PwaPlayer \
     PrivacyCentral \
-    SplitInstallService
+    SplitInstallService \
+    WebCalendarManager
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
 PRODUCT_PACKAGES += SeedVault
