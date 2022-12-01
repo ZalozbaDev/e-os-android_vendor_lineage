@@ -139,7 +139,8 @@ PRODUCT_PACKAGES += \
     Apps \
     PwaPlayer \
     PrivacyCentral \
-    SplitInstallService
+    SplitInstallService \
+    WebCalendarManager
 
 # Optional applications
 MINIMAL_APPS ?= false
