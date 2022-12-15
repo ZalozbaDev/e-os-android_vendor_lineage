@@ -115,7 +115,7 @@ PRODUCT_PACKAGES += \
 
 # /e/ OS packages
 PRODUCT_PACKAGES += \
-    eSpeakTTS \
+    PicoTTS \
     GmsCore \
     GsfProxy \
     FakeStore \
