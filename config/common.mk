@@ -112,7 +112,7 @@ PRODUCT_PACKAGES += \
 
 # Required /e/ packages
 PRODUCT_PACKAGES += \
-    eSpeakTTS \
+    PicoTTS \
     GmsCore \
     GsfProxy \
     FakeStore \
