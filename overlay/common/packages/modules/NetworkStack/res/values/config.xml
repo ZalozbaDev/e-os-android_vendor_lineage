@@ -4,14 +4,14 @@
     <bool name="config_dhcp_client_hostname">true</bool>
 
     <!-- HTTP URL for network validation, to use for detecting captive portals. -->
-    <string name="config_captive_portal_http_url" translatable="false">http://connectivity.ecloud.global</string>
+    <string name="config_captive_portal_http_url" translatable="false">http://connectivity.murena.io</string>
 
     <!-- HTTPS URL for network validation, to use for confirming internet connectivity. -->
-    <string name="config_captive_portal_https_url" translatable="false">https://connectivity.ecloud.global</string>
+    <string name="config_captive_portal_https_url" translatable="false">https://connectivity.murena.io</string>
 
     <!-- List of fallback URLs to use for detecting captive portals. -->
     <string-array name="config_captive_portal_fallback_urls" translatable="false">
-        <item>http://204.ecloud.global</item>
-        <item>http://ecloud.global/generate_204</item>
+        <item>http://204.murena.io</item>
+        <item>http://murena.io/generate_204</item>
     </string-array>
 </resources>
