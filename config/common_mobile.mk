@@ -1,6 +1,12 @@
 # Inherit common mobile Lineage stuff
 $(call inherit-product, vendor/lineage/config/common.mk)
 
+# Include AOSP audio files
+include vendor/lineage/config/aosp_audio.mk
+
+# Include Lineage audio files
+include vendor/lineage/config/lineage_audio.mk
+
 # Apps
 PRODUCT_PACKAGES += \
     Backgrounds \
@@ -58,6 +64,12 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # SystemUI plugins
 PRODUCT_PACKAGES += \
     QuickAccessWallet
+
+# Themes
+PRODUCT_PACKAGES += \
+    LineageBlackTheme \
+    LineageThemesStub \
+    ThemePicker
 
 # Include configuration for eos
 $(call inherit-product, vendor/eos/config/common_mobile.mk)
