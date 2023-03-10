@@ -112,7 +112,6 @@ PRODUCT_PACKAGES += \
 
 # Required /e/ packages
 PRODUCT_PACKAGES += \
-    PicoTTS \
     GmsCore \
     GsfProxy \
     FakeStore \
@@ -138,6 +137,9 @@ PRODUCT_PACKAGES += \
     PrivacyCentral \
     SplitInstallService \
     WebCalendarManager
+
+# PicoTTS
+$(call inherit-product, external/svox/svox_tts.mk)
 
 ifeq ($(INCLUDE_BACKUP_APP),true)
 PRODUCT_PACKAGES += SeedVault
