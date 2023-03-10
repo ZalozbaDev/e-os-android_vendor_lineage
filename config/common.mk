@@ -115,7 +115,6 @@ PRODUCT_PACKAGES += \
 
 # /e/ OS packages
 PRODUCT_PACKAGES += \
-    PicoTTS \
     GmsCore \
     GsfProxy \
     FakeStore \
@@ -141,6 +140,9 @@ PRODUCT_PACKAGES += \
     PrivacyCentral \
     SplitInstallService \
     WebCalendarManager
+
+# PicoTTS
+$(call inherit-product, external/svox/svox_tts.mk)
 
 # Optional applications
 MINIMAL_APPS ?= false
