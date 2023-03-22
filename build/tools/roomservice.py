@@ -149,6 +149,12 @@ def get_default_revision():
                 r = remote.get('revision')
     return r.replace('refs/heads/', '').replace('refs/tags/', '')
 
+def get_fallback_branch():
+    m = ElementTree.parse(get_manifest_path())
+    d = m.findall('default')[0]
+    r = d.get('revision')
+    return r.replace('refs/heads/', '').replace('refs/tags/', '')
+
 def get_from_manifest(devicename):
     try:
         lm = ElementTree.parse(".repo/local_manifests/roomservice.xml")
@@ -198,12 +204,22 @@ def is_in_manifest(projectpath):
     return False
 
 def is_on_e(repository):
+    default_branch = get_default_revision()
     search_link = "{}/projects?search={}".format(gitlab_api_url, repository)
     gitlabreq = urllib.request.Request(search_link)
     try:
         result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
         if result:
-            return True
+            branch_url = '{}/projects/{}/repository/branches'.format(gitlab_api_url, result[0]['id'])
+            branches = urllib.request.Request(branch_url)
+            branches_available = json.loads(urllib.request.urlopen(branches).read().decode())
+            for b in branches_available:
+                if b["name"] == default_branch:
+                   repos_from_e = True
+                   return True
+            else:
+                repos_from_e = False
+                return False
     except:
         print("Failed to search Gitlab or could not parse return data from Gitlab")
         return False
@@ -295,10 +311,10 @@ def get_default_or_fallback_revision(repo_name):
     print("Default revision: %s" % default_revision)
     print("Checking branch info")
 
-    if repos_from_e:
+    gitreq = urllib.request.Request("https://api.github.com/repos/LineageOS/" + repo_name + "/branches")
+
+    if is_on_e(repo_name) and repos_from_e:
         gitreq = urllib.request.Request("{}/projects/{}/repository/branches".format(gitlab_api_url, repository['id']))
-    else:
-        gitreq = urllib.request.Request("https://api.github.com/repos/LineageOS/" + repo_name + "/branches")
 
     add_auth(gitreq)
     result = json.loads(urllib.request.urlopen(gitreq).read().decode())
@@ -306,6 +322,7 @@ def get_default_or_fallback_revision(repo_name):
         return default_revision
 
     fallbacks = [ get_default_revision_no_minor() ]
+    fallbacks += [ get_fallback_branch().rsplit('.', 1)[0] ]
     if os.getenv('ROOMSERVICE_BRANCHES'):
         fallbacks += list(filter(bool, os.getenv('ROOMSERVICE_BRANCHES').split(' ')))
 
@@ -335,7 +352,7 @@ else:
         repo_name = repository['name']
         if re.match(r"^android_device_[^_]*_" + device + "$", repo_name):
             print("Found repository: %s" % repository['name'])
-            
+
             manufacturer = repo_name.replace("android_device_", "").replace("_" + device, "")
             repo_path = "device/%s/%s" % (manufacturer, device)
             revision = get_default_or_fallback_revision(repo_name)
