@@ -331,9 +331,10 @@ if depsonly:
     sys.exit()
 
 else:
-    for repo_name in repositories:
+    for repository in repositories:
+        repo_name = repository['name']
         if re.match(r"^android_device_[^_]*_" + device + "$", repo_name):
-            print("Found repository: %s" % repo_name)
+            print("Found repository: %s" % repository['name'])
             
             manufacturer = repo_name.replace("android_device_", "").replace("_" + device, "")
             repo_path = "device/%s/%s" % (manufacturer, device)
