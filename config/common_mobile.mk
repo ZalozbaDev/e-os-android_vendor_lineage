@@ -7,11 +7,6 @@ include vendor/lineage/config/aosp_audio.mk
 # Include Lineage audio files
 include vendor/lineage/config/lineage_audio.mk
 
-# Default notification/alarm sounds
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.config.notification_sound=Argon.ogg \
-    ro.config.alarm_alert=Hassium.ogg
-
 # Apps
 PRODUCT_PACKAGES += \
     Aperture \
@@ -23,7 +18,7 @@ PRODUCT_PACKAGES += \
     Profiles \
     Seedvault
 
-ifneq ($(TARGET_EXCLUDES_AUDIOFX),true)
+ifeq ($(TARGET_INCLUDES_AUDIOFX),true)
 PRODUCT_PACKAGES += \
     AudioFX
 endif
@@ -76,3 +71,6 @@ PRODUCT_PACKAGES += \
     LineageBlackTheme \
     ThemePicker \
     ThemesStub
+
+# Include configuration for eos
+$(call inherit-product, vendor/eos/config/common_mobile.mk)
