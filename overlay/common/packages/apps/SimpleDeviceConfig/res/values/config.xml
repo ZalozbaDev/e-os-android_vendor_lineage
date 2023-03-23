@@ -50,5 +50,8 @@
 
         <!-- Disable always screen on -->
         <item>attention_manager_service/keep_screen_on_enabled=false</item>
+
+        <!-- Disable Splash screen for selective apps -->
+        <item>window_manager/splash_screen_exception_list=foundation.e.accountmanager</item>
     </string-array>
 </resources>
