@@ -134,7 +134,7 @@ PRODUCT_PACKAGES += \
     BrowserWebView \
     Apps \
     PwaPlayer \
-    PrivacyCentral \
+    AdvancedPrivacy \
     SplitInstallService \
     WebCalendarManager
 
