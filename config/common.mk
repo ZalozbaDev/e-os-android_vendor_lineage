@@ -227,6 +227,10 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/lineage/overlay/common \
     vendor/lineage/overlay/microg
 
+# Translations
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/crowdin/overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/crowdin/overlay
+
 PRODUCT_VERSION_MAJOR = 1
 PRODUCT_VERSION_MINOR = 12
 PRODUCT_VERSION_MAINTENANCE := 0
