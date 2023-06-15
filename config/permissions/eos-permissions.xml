@@ -44,6 +44,13 @@
         <permission name="android.permission.WRITE_EXTERNAL_STORAGE" fixed="false"/>
     </exception>
 
+    <exception package="app.talkbackfoss">
+        <!-- Microphone -->
+        <permission name="android.permission.RECORD_AUDIO" fixed="false"/>
+        <!-- Phone -->
+        <permission name="android.permission.READ_PHONE_STATE" fixed="false"/>
+    </exception>
+
     <exception package="com.generalmagic.magicearth">
         <!-- Camera -->
         <permission name="android.permission.CAMERA" fixed="false"/>
