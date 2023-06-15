@@ -138,6 +138,10 @@ PRODUCT_PACKAGES += \
     SplitInstallService \
     WebCalendarManager
 
+# TalkBack
+PRODUCT_PACKAGES += \
+    Talkback
+
 # PicoTTS
 $(call inherit-product, external/svox/svox_tts.mk)
 
