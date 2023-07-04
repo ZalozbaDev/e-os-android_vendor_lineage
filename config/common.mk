@@ -122,14 +122,12 @@ PRODUCT_PACKAGES += \
     Mail \
     BlissLauncher \
     BlissIconPack \
-    MozillaNlpBackend \
     OpenWeatherMapWeatherProvider \
     AccountManager \
     Camera \
     eDrive \
     Notes \
     Tasks \
-    NominatimNlpBackend \
     DroidGuard \
     OpenKeychain \
     Message \
