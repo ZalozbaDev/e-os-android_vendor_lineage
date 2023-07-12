@@ -9,19 +9,9 @@ include vendor/lineage/config/lineage_audio.mk
 
 # Apps
 PRODUCT_PACKAGES += \
-    Aperture \
     Backgrounds \
-    Eleven \
-    Etar \
     ExactCalculator \
-    Jelly \
-    Profiles \
-    Seedvault
-
-ifeq ($(TARGET_INCLUDES_AUDIOFX),true)
-PRODUCT_PACKAGES += \
-    AudioFX
-endif
+    Jelly
 
 ifeq ($(PRODUCT_TYPE), go)
 PRODUCT_PACKAGES += \
