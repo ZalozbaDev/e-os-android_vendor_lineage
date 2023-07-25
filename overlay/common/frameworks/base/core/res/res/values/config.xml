@@ -52,6 +52,8 @@
         <!-- The MicroG Unified location provider -->
         <item>org.microg.nlp.backend.ichnaea</item>
         <item>org.microg.nlp.backend.nominatim</item>
+        <!-- MediaTek ImsService -->
+        <item>com.mediatek.ims</item>
     </string-array>
 
     <bool name="config_cellBroadcastAppLinks">true</bool>
