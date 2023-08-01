@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Copyright (C) 2012-2013, The CyanogenMod Project
 #           (C) 2017-2018,2020-2021, The LineageOS Project
-#           (C) 2022, ECORP SAS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,7 +41,6 @@ except ImportError:
 from xml.etree import ElementTree
 
 product = sys.argv[1]
-gitlab_api_url = "https://gitlab.e.foundation/api/v4"
 
 if len(sys.argv) > 2:
     depsonly = sys.argv[2]
@@ -55,12 +53,13 @@ except:
     device = product
 
 if not depsonly:
-    print("Device %s not found. Attempting to retrieve device repository from E FOUNDATION Gitlab (https://gitlab.e.foundation)." % device)
+    print("Device %s not found. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
 
 repositories = []
 
 try:
     authtuple = netrc.netrc().authenticators("api.github.com")
+
     if authtuple:
         auth_string = ('%s:%s' % (authtuple[0], authtuple[2])).encode()
         githubauth = base64.encodestring(auth_string).decode().replace('\n', '')
@@ -69,38 +68,22 @@ try:
 except:
     githubauth = None
 
-def getRepos():
-    global repos_from_e
-    repos_from_e = True
-    search_link = "{}/groups/230/projects?search=_{} device".format(gitlab_api_url, device)
-    search_link = search_link.replace(' ', '%20')
-    gitlabreq = urllib.request.Request(search_link)
-    try:
-        result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
-        for res in result:
-            repositories.append(res)
-    except:
-        print("Failed to search Gitlab or could not parse return data from Gitlab")
-        repos_from_e = False
-    if not repositories:
-        print("Device %s not found in e. Attempting to retrieve device repository from LineageOS Github (http://github.com/LineageOS)." % device)
-        githubreq = urllib.request.Request("https://api.github.com/search/repositories?q=%s+user:LineageOS+in:name+fork:true" % device)
-        add_auth(githubreq)
-        try:
-            result = json.loads(urllib.request.urlopen(githubreq).read().decode())
-            repos_from_e = False
-        except:
-            print("Failed to search GitHub or could not parse return data from GitHub")
-            sys.exit(1)
-        for res in result.get('items', []):
-            repositories.append(res)
-
 def add_auth(githubreq):
     if githubauth:
         githubreq.add_header("Authorization","Basic %s" % githubauth)
 
 if not depsonly:
-    getRepos()
+    githubreq = urllib.request.Request("https://raw.githubusercontent.com/LineageOS/mirror/master/default.xml")
+    try:
+        result = ElementTree.fromstring(urllib.request.urlopen(githubreq).read().decode())
+    except urllib.error.URLError:
+        print("Failed to fetch data from GitHub")
+        sys.exit(1)
+    except ValueError:
+        print("Failed to parse return data from GitHub")
+        sys.exit(1)
+    for res in result.findall('.//project'):
+        repositories.append(res.attrib['name'][10:])
 
 local_manifests = r'.repo/local_manifests'
 if not os.path.exists(local_manifests): os.makedirs(local_manifests)
@@ -141,16 +124,6 @@ def get_manifest_path():
         return ".repo/manifests/{}".format(m.find("include").get("name"))
 
 def get_default_revision():
-    m = ElementTree.parse(get_manifest_path())
-    d = m.findall('default')[0]
-    r = d.get('revision')
-    if repos_from_e:
-        for remote in m.findall('remote'):
-            if 'e' == remote.get('name'):
-                r = remote.get('revision')
-    return r.replace('refs/heads/', '').replace('refs/tags/', '')
-
-def get_fallback_branch():
     m = ElementTree.parse(get_manifest_path())
     d = m.findall('default')[0]
     r = d.get('revision')
@@ -206,27 +179,6 @@ def is_in_manifest(projectpath):
 
     return False
 
-def is_on_e(repository):
-    default_branch = get_default_revision()
-    search_link = "{}/projects?search={}".format(gitlab_api_url, repository)
-    gitlabreq = urllib.request.Request(search_link)
-    try:
-        result = json.loads(urllib.request.urlopen(gitlabreq).read().decode())
-        if result:
-            branch_url = '{}/projects/{}/repository/branches'.format(gitlab_api_url, result[0]['id'])
-            branches = urllib.request.Request(branch_url)
-            branches_available = json.loads(urllib.request.urlopen(branches).read().decode())
-            for b in branches_available:
-                if b["name"] == default_branch:
-                   repos_from_e = True
-                   return True
-            else:
-                repos_from_e = False
-                return False
-    except:
-        print("Failed to search Gitlab or could not parse return data from Gitlab")
-        return False
-
 def add_to_manifest(repositories):
     try:
         lm = ElementTree.parse(".repo/local_manifests/roomservice.xml")
@@ -240,22 +192,15 @@ def add_to_manifest(repositories):
         repo_revision = repository['branch']
         print('Checking if %s is fetched from %s' % (repo_target, repo_name))
         if is_in_manifest(repo_target):
-            print('%s already fetched to %s' % (repo_name, repo_target))
+            print('LineageOS/%s already fetched to %s' % (repo_name, repo_target))
             continue
 
-        print('Adding dependency: %s -> %s' % (repo_name, repo_target))
-        if repos_from_e and is_on_e(repo_name):
-            project = ElementTree.Element("project", attrib = {
-                "path": repo_target,
-                "remote": "e",
-                "name": "e/devices/%s" % repo_name,
-                "revision": repo_revision })
-        else:
-            project = ElementTree.Element("project", attrib = {
-                "path": repo_target,
-                "remote": "github",
-                "name": "LineageOS/%s" % repo_name,
-                "revision": repo_revision })
+        print('Adding dependency: LineageOS/%s -> %s' % (repo_name, repo_target))
+        project = ElementTree.Element("project", attrib = {
+            "path": repo_target,
+            "remote": "github",
+            "name": "LineageOS/%s" % repo_name,
+            "revision": repo_revision })
         lm.append(project)
 
     indent(lm, 0)
@@ -314,18 +259,13 @@ def get_default_or_fallback_revision(repo_name):
     print("Default revision: %s" % default_revision)
     print("Checking branch info")
 
-    gitreq = urllib.request.Request("https://api.github.com/repos/LineageOS/" + repo_name + "/branches")
-
-    if is_on_e(repo_name) and repos_from_e:
-        gitreq = urllib.request.Request("{}/projects/{}/repository/branches".format(gitlab_api_url, repository['id']))
-
-    add_auth(gitreq)
-    result = json.loads(urllib.request.urlopen(gitreq).read().decode())
+    githubreq = urllib.request.Request("https://api.github.com/repos/LineageOS/" + repo_name + "/branches")
+    add_auth(githubreq)
+    result = json.loads(urllib.request.urlopen(githubreq).read().decode())
     if has_branch(result, default_revision):
         return default_revision
 
     fallbacks = [ get_default_revision_no_minor() ]
-    fallbacks += [ get_fallback_branch().rsplit('.', 1)[0] ]
     if os.getenv('ROOMSERVICE_BRANCHES'):
         fallbacks += list(filter(bool, os.getenv('ROOMSERVICE_BRANCHES').split(' ')))
 
@@ -351,11 +291,10 @@ if depsonly:
     sys.exit()
 
 else:
-    for repository in repositories:
-        repo_name = repository['name']
+    for repo_name in repositories:
         if re.match(r"^android_device_[^_]*_" + device + "$", repo_name):
-            print("Found repository: %s" % repository['name'])
-
+            print("Found repository: %s" % repo_name)
+            
             manufacturer = repo_name.replace("android_device_", "").replace("_" + device, "")
             repo_path = "device/%s/%s" % (manufacturer, device)
             revision = get_default_or_fallback_revision(repo_name)
