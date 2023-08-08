@@ -53,5 +53,8 @@
 
         <!-- Disable Splash screen for selective apps -->
         <item>window_manager/splash_screen_exception_list=foundation.e.accountmanager,foundation.e.pwaplayer</item>
+        
+        <!-- Show notification volume control slider separate from ring -->
+        <item>systemui/volume_separate_notification=true</item>
     </string-array>
 </resources>
