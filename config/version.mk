@@ -29,7 +29,7 @@ ifndef LINEAGE_BUILDTYPE
 endif
 
 # Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter test dev stable,$(LINEAGE_BUILDTYPE)),)
+ifeq ($(filter test dev stable partner,$(LINEAGE_BUILDTYPE)),)
     LINEAGE_BUILDTYPE := UNOFFICIAL
     LINEAGE_EXTRAVERSION :=
 endif
