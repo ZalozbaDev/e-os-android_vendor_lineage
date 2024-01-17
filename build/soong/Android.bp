@@ -260,6 +260,23 @@ egl_display_array {
 }
 
 soong_config_module_type {
+    name: "force_render_engine_gen_textures",
+    module_type: "cc_defaults",
+    config_namespace: "lineageGlobalVars",
+    bool_variables: ["force_render_engine_gen_textures"],
+    properties: ["cppflags"],
+}
+
+force_render_engine_gen_textures {
+    name: "force_render_engine_gen_textures_defaults",
+    soong_config_variables: {
+        force_render_engine_gen_textures: {
+            cppflags: ["-DTARGET_FORCE_RENDER_ENGINE_GEN_TEXTURES"],
+        },
+    },
+}
+
+soong_config_module_type {
     name: "health_charging_control",
     module_type: "cc_defaults",
     config_namespace: "lineageGlobalVars",
